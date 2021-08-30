@@ -29,7 +29,7 @@ nos = [
 ]
 
 # ORDEM CRESCENTE
-grafo = [
+grafoCrescente = [
     ["GOMES", "RIBEIRO"],  # 0
     ["JACINTO", "PACHECO", "QUEIROZ"],
     ["JACINTO", "KAISER", "TEIXEIRA", "XAVIER"],
@@ -48,12 +48,42 @@ grafo = [
     ["BORGES", "LACERDA"],
     ["BORGES", "INACIO"],
     ["ALENCAR", "TEIXEIRA"],
-    ["JACINTO", "ZAMBONI"],
+    ["JACINTO", "YORK", "ZAMBONI"],
     ["CENTRO", "NOGUEIRA", "RIBEIRO", "WAGNER"],
     ["LACERDA"],
     ["YORK"],
     ["FREIRE", "TEIXEIRA"],
     ["CENTRO", "OLIVEIRA"],
     ["ESTEVES", "KAISER", "SILVA", "VASCONCELOS"],
+    ["SILVA"],
+]
+
+# ORDEM DECRESCENTE
+grafoDecrescente = [
+    ["RIBEIRO","GOMES"],  # 0
+    ["QUEIROZ", "PACHECO", "JACINTO"],
+    ["XAVIER","TEIXEIRA", "JACINTO"],
+    ["MACEDO"],
+    ["YORK", "MACEDO"],
+    ["WAGNER","OLIVEIRA"],
+    ["ALENCAR"],
+    ["NOGUEIRA"],
+    ["QUEIROZ"],
+    ["SILVA","CENTRO", "BORGES"],
+    ["YORK", "MACEDO", "CENTRO"],
+    ["UCHOA","PACHECO","OLIVEIRA"],
+    ["NOGUEIRA", "KAISER", "ESTEVES", "DUARTE"],
+    ["TEIXEIRA", "MACEDO", "HOLANDA"],
+    ["XAVIER", "LACERDA", "FREIRE"],
+    ["LACERDA", "BORGES"],
+    ["INACIO", "BORGES"],
+    ["TEIXEIRA", "ALENCAR"],
+    ["ZAMBONI", "YORK", "JACINTO"],
+    ["WAGNER", "RIBEIRO", "NOGUEIRA", "CENTRO"],
+    ["LACERDA"],
+    ["YORK"],
+    ["TEIXEIRA", "FREIRE"],
+    ["OLIVEIRA", "CENTRO"],
+    ["VASCONCELOS", "SILVA", "KAISER", "ESTEVES"],
     ["SILVA"],
 ]
