@@ -2,7 +2,7 @@
 """
 Created on Thu Aug 26 10:52:41 2021
 
-@author: Neto
+@authors: MMJP
 """
 
 from busca import busca
