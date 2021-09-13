@@ -32,3 +32,21 @@ destino1 = deepcopy(destino)
 caminho = sol.profundidadeMulti(origem,destino1)
 print("\n> Profundidade com destino múltiplo: ", caminho)
 
+# PROFUNDIDADE LIMITADA
+
+origem = "ALENCAR"
+destino = "SILVA"
+
+caminho = sol.profundidade_limitada(origem,destino,2)
+print("\nProfundidade Limitada (2)..: ",caminho)
+
+caminho = sol.profundidade_limitada(origem,destino,3)
+print("\nProfundidade Limitada (3)..: ",caminho)
+
+caminho = sol.profundidade_limitada(origem,destino,5)
+print("\nProfundidade Limitada (5)..: ",caminho)
+
+#APROFUNDAMENTO ITERATIVO
+
+caminho = sol.aprofundamento_iterativo(origem,destino)
+print("\nAprof. Iterativo...:",caminho)
