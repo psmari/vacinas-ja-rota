@@ -288,7 +288,7 @@ class busca(object):
                                 fim.remove(novo)
                                 Flag4 = True
 
-        return "caminho não encontrado"
+            return "caminho não encontrado"
 
     def profundidade_limitada(self, inicio, fim, limite):
         
