@@ -10,39 +10,51 @@ destino1 = []
 # destino = ["SILVA"]
 destino = ["WAGNER", "YORK", "SILVA"]
 destino1 = deepcopy(destino)
+caminhoAmplitudeUnitario = []
+caminhoProfundidadeUnitario = []
+caminhoAmplitudeMulti = []
+caminhoProfundidadeMulti = []
 
 if len(destino) == 1:
-    caminho = sol.amplitudeUnitario(origem, destino[0])
-    print("\n> Amplitude com destino único: ", caminho)
+    caminhoAmplitudeUnitario = sol.amplitudeUnitario(origem, destino[0])
+    print("\n> Amplitude com destino único: ", caminhoAmplitudeUnitario)
 
-    caminho = sol.profundidadeUnitario(origem, destino[0])
-    print("\n> Profundidade com destino único: ", caminho)
+    caminhoProfundidadeUnitario = sol.profundidadeUnitario(origem, destino[0])
+    print("\n> Profundidade com destino único: ", caminhoProfundidadeUnitario)
 
 else:
-    caminho = sol.amplitudeMulti(origem, destino1)
-    print("\n> Amplitude com destino múltiplo: ", caminho)
+    caminhoAmplitudeMulti = sol.amplitudeMulti(origem, destino1)
+    print("\n> Amplitude com destino múltiplo: ", caminhoAmplitudeMulti)
 
-    caminho = sol.profundidadeMulti(origem, destino1)
-    print("\n> Profundidade com destino múltiplo: ", caminho)
+    caminhoProfundidadeMulti = sol.profundidadeMulti(origem, destino1)
+    print("\n> Profundidade com destino múltiplo: ", caminhoProfundidadeMulti)
+
 
 # PROFUNDIDADE LIMITADA
-
 origem = "ALENCAR"
 destino = "SILVA"
 
-caminho = sol.profundidade_limitada(origem, destino, 2)
-print("\nProfundidade Limitada (2)..: ", caminho)
+caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 2)
+print("\nProfundidade Limitada (2)..: ", caminhoProfundidadeLimitada)
 
-caminho = sol.profundidade_limitada(origem, destino, 3)
-print("\nProfundidade Limitada (3)..: ", caminho)
+caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 3)
+print("\nProfundidade Limitada (3)..: ", caminhoProfundidadeLimitada)
 
-caminho = sol.profundidade_limitada(origem, destino, 5)
-print("\nProfundidade Limitada (5)..: ", caminho)
+caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 5)
+print("\nProfundidade Limitada (5)..: ", caminhoProfundidadeLimitada)
+
 
 # APROFUNDAMENTO ITERATIVO
+caminhoAprofundamentoIterativo = sol.aprofundamento_iterativo(origem, destino)
+print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
 
-caminho = sol.aprofundamento_iterativo(origem, destino)
-print("\nAprof. Iterativo...:", caminho)
 
 # INTERFACE
-buildGUI()
+buildGUI(
+    caminhoAmplitudeUnitario,
+    caminhoProfundidadeUnitario,
+    caminhoAmplitudeMulti,
+    caminhoProfundidadeMulti,
+    caminhoProfundidadeLimitada,
+    caminhoAprofundamentoIterativo,
+)
