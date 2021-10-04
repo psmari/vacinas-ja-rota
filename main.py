@@ -14,6 +14,7 @@ caminhoAmplitudeUnitario = []
 caminhoProfundidadeUnitario = []
 caminhoAmplitudeMulti = []
 caminhoProfundidadeMulti = []
+caminhoBidirecional = []
 
 if len(destino) == 1:
     caminhoAmplitudeUnitario = sol.amplitudeUnitario(origem, destino[0])
@@ -48,13 +49,16 @@ print("\nProfundidade Limitada (5)..: ", caminhoProfundidadeLimitada)
 caminhoAprofundamentoIterativo = sol.aprofundamento_iterativo(origem, destino)
 print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
 
+#BIDIRECIONAL
+caminhoBidirecional = sol.bidirecional(origem, destino)
+print("\nBidirecional.......: ",caminhoBidirecional)
 
 # INTERFACE
-buildGUI(
-    caminhoAmplitudeUnitario,
-    caminhoProfundidadeUnitario,
-    caminhoAmplitudeMulti,
-    caminhoProfundidadeMulti,
-    caminhoProfundidadeLimitada,
-    caminhoAprofundamentoIterativo,
-)
+#buildGUI(
+ #   caminhoAmplitudeUnitario,
+  #  caminhoProfundidadeUnitario,
+  #  caminhoAmplitudeMulti,
+  #  caminhoProfundidadeMulti,
+  #  caminhoProfundidadeLimitada,
+  #  caminhoAprofundamentoIterativo,
+#)
