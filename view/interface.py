@@ -1,92 +1,85 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from busca import busca
+from dados import nos
 from view.grafo import *
+from view.buildGrafo import *
+
+sol = busca()
 
 
-def buildGrafo(root, rebuild, caminho):
-    global grafoFrame
-    global background
-
-    if rebuild:
-        grafoFrame.destroy()
-
-    grafoFrame = LabelFrame(root, text=" Grafo ")
-
-    Label(grafoFrame, image=background).grid(column=1, row=1, columnspan=16, rowspan=14)
-
-    ordemPosto = 1
-    for posto in grafo:
-        Label(
-            grafoFrame,
-            text=f"X\n{posto[2]}",
-            foreground="white",
-            background="#1BA1E2",
-            font=("TkDefaultFont", 10),
-        ).grid(column=posto[1], row=posto[0])
-
-        for lugar in caminho:
-            if posto[2].upper() == lugar:
-                Label(
-                    grafoFrame,
-                    text=f"{ordemPosto}\n{posto[2]}",
-                    foreground="white",
-                    background="green",
-                    font=("TkDefaultFont", 10),
-                ).grid(column=posto[1], row=posto[0])
-
-                ordemPosto += 1
-
-    grafoFrame.grid(column=1, row=0, rowspan=2, padx=4, pady=4)
+def btnFunc(btn, origem, destino):
+    if btn == "Amplitude Unitario":
+        return sol.amplitudeUnitario(origem, destino)
+    elif btn == "Profundidade Unitario":
+        return sol.profundidadeUnitario(origem, destino)
+    elif btn == "Amplitude Multipla":
+        return sol.amplitudeMulti(origem, [destino])
+    elif btn == "Profundidae Multipla":
+        return sol.profundidadeMulti(origem, [destino])
+    elif btn == "Profundidade Limitada":
+        return sol.profundidade_limitada(origem, destino, 5)
+    elif btn == "Aprofundamento Iterativo":
+        return sol.aprofundamento_iterativo(origem, destino)
+    elif btn == "Bidirecional":
+        return sol.bidirecional(origem, destino)
 
 
-def buildGUI(
-    caminhoAmplitudeUnitario,
-    caminhoProfundidadeUnitario,
-    caminhoAmplitudeMulti,
-    caminhoProfundidadeMulti,
-    caminhoProfundidadeLimitada,
-    caminhoAprofundamentoIterativo,
-):
+def buildGUI():
     root = Tk()
     root.title("VacinasJá")
 
     global grafoFrame
-    global background
 
     background = ImageTk.PhotoImage(Image.open("./view/sprites/graph.png"))
+    origem = StringVar(root)
+    origem.set("UCHOA")
+    destino = StringVar(root)
+    destino.set("DUARTE")
 
     # FRAMES
-    inputFrame = LabelFrame(root, text=" Lugares ", padx=4, pady=4)
+    origemFrame = LabelFrame(root, text=" Origem ", padx=4, pady=4)
+    destinoFrame = LabelFrame(root, text=" Origem ", padx=4, pady=4)
     opcoesFrame = LabelFrame(root, text=" Algoritimos ", padx=4, pady=4)
     grafoFrame = LabelFrame(root, text=" Grafo ")
 
     # INPUT
-    Label(inputFrame, text="input").grid(column=0, row=0)
+    origemField = OptionMenu(origemFrame, origem, *nos)
+    origemField.config(width=16)
+    origemField.grid(column=0, row=0)
+
+    destinoField = OptionMenu(destinoFrame, destino, *nos)
+    destinoField.config(width=16)
+    destinoField.grid(column=0, row=1)
 
     # OPÇÕES
     botaoNum = 0
     botoes = [
-        ["Amplitude Unitario", caminhoAmplitudeUnitario],
-        ["Profundidade Unitario", caminhoProfundidadeUnitario],
-        ["Amplitude Multipla", caminhoAmplitudeMulti],
-        ["Profundidae Multipla", caminhoProfundidadeMulti],
-        ["Profundidade Limitada", caminhoProfundidadeLimitada],
-        ["Aprofundamento Iterativo", caminhoAprofundamentoIterativo],
+        "Amplitude Unitario",
+        "Profundidade Unitario",
+        "Amplitude Multipla",
+        "Profundidae Multipla",
+        "Profundidade Limitada",
+        "Aprofundamento Iterativo",
+        "Bidirecional",
     ]
 
     for botao in botoes:
         Button(
             opcoesFrame,
             width=24,
-            text=botao[0],
-            command=lambda: buildGrafo(root, True, botao[1]),
+            text=botao,
+            command=lambda botao=botao: buildGrafo(
+                root, btnFunc(botao, origem.get(), destino.get()), background
+            ),
         ).grid(column=0, row=botaoNum)
 
         botaoNum += 1
 
     # BUILD INTERFACE
-    inputFrame.grid(column=0, row=0, padx=(4, 2), pady=4)
-    opcoesFrame.grid(column=0, row=1, padx=(4, 2), pady=4)
-    buildGrafo(root, False, caminhoAmplitudeUnitario)
+    origemFrame.grid(column=0, row=0, padx=(4, 2), pady=4)
+    destinoFrame.grid(column=0, row=1, padx=(4, 2), pady=4)
+    opcoesFrame.grid(column=0, row=2, padx=(4, 2), pady=4)
+    buildGrafo(root, btnFunc(botoes[0], origem.get(), destino.get()), background)
 
     root.mainloop()
