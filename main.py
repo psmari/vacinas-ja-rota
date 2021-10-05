@@ -49,16 +49,9 @@ print("\nProfundidade Limitada (5)..: ", caminhoProfundidadeLimitada)
 caminhoAprofundamentoIterativo = sol.aprofundamento_iterativo(origem, destino)
 print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
 
-#BIDIRECIONAL
+# BIDIRECIONAL
 caminhoBidirecional = sol.bidirecional(origem, destino)
-print("\nBidirecional.......: ",caminhoBidirecional)
+print("\nBidirecional.......: ", caminhoBidirecional)
 
 # INTERFACE
-#buildGUI(
- #   caminhoAmplitudeUnitario,
-  #  caminhoProfundidadeUnitario,
-  #  caminhoAmplitudeMulti,
-  #  caminhoProfundidadeMulti,
-  #  caminhoProfundidadeLimitada,
-  #  caminhoAprofundamentoIterativo,
-#)
+# buildGUI()
