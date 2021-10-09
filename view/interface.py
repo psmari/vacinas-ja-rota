@@ -39,7 +39,7 @@ def buildGUI():
     root.title("VacinasJá")
     root.config(background=CLR_BACKGROUND)
 
-    background = ImageTk.PhotoImage(Image.open("./view/sprites/graph.png"))
+    background = ImageTk.PhotoImage(Image.open("./view/sprites/map.png"))
     origem = StringVar(root)
     origem.set("UCHOA")
     destino = StringVar(root)
@@ -126,8 +126,9 @@ def buildGUI():
         background=CLR_BACKGROUND,
     )
 
-    # GRAFO BACKGROUND
+    # GRAFO
     Label(grafoFrame, image=background).grid(column=1, row=1, columnspan=16, rowspan=14)
+    buildGrafo(root, [], background),
 
     # BUILD INTERFACE
     origemFrame.pack(padx=8, pady=8)
