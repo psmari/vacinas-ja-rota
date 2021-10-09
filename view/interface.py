@@ -1,37 +1,9 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from busca import busca
 from dados import nos
-from view.colors import *
-from view.grafo import *
+from view.constants import *
 from view.buildGrafo import buildGrafo
-
-sol = busca()
-
-
-btnNames = [
-    "Amplitude Unitario",
-    "Profundidade Unitario",
-    "Amplitude Multipla",
-    "Profundidade Multipla",
-    "Profundidade Limitada",
-    "Aprofundamento Iterativo",
-    "Bidirecional",
-]
-
-
-def botoes(btn, origem, destino):
-    switcher = {
-        0: sol.amplitudeUnitario(origem, destino),
-        1: sol.profundidadeUnitario(origem, destino),
-        2: sol.amplitudeMulti(origem, [destino]),
-        3: sol.profundidadeMulti(origem, [destino]),
-        4: sol.profundidade_limitada(origem, destino, 5),
-        5: sol.aprofundamento_iterativo(origem, destino),
-        6: sol.bidirecional(origem, destino),
-    }
-
-    return switcher.get(btn, "nothing")
+from view.gerarRota import gerarRota
 
 
 def buildGUI():
@@ -39,7 +11,6 @@ def buildGUI():
     root.title("VacinasJá")
     root.config(background=CLR_BACKGROUND)
 
-    background = ImageTk.PhotoImage(Image.open("./view/sprites/map.png"))
     origem = StringVar(root)
     origem.set("UCHOA")
     destino = StringVar(root)
@@ -77,10 +48,6 @@ def buildGUI():
         foreground=CLR_FONT,
         background=CLR_BACKGROUND,
     )
-    grafoFrame = Frame(
-        root,
-        background=CLR_BACKGROUND,
-    )
 
     # INPUT
     origemField = OptionMenu(origemFrame, origem, *nos)
@@ -100,42 +67,32 @@ def buildGUI():
     destinoField.grid(column=0, row=1, padx=4, pady=4)
 
     # BOTOES
-    for botao in range(6):
+    for botao in range(7):
         Button(
             opcoesFrame,
             width=22,
-            text=btnNames[botao],
+            text=BTN_NAMES[botao],
             font=("TkDefaultFont", 9, "bold"),
             activeforeground=CLR_DEFAULT,
             command=lambda botao=botao, origem=origem, destino=destino: buildGrafo(
-                root, botoes(botao, origem.get(), destino.get()), background
+                root,
+                gerarRota(
+                    botao,
+                    origem.get(),
+                    destino.get(),
+                ),
             ),
         ).grid(column=0, row=botao, padx=4, pady=4)
 
-    # DESENVOLVEDORES
-    nomes = Label(
-        menuFrame,
-        text="Joel dos Anjos\n"
-        + "\nMarco Antônio\n"
-        + "\nMariana Pereira\n"
-        + "\nPedro Luis",
-        font=("TkDefaultFont", 9, "bold"),
-        anchor="w",
-        justify=LEFT,
-        foreground=CLR_FONT,
-        background=CLR_BACKGROUND,
-    )
-
     # GRAFO
-    Label(grafoFrame, image=background).grid(column=1, row=1, columnspan=16, rowspan=14)
-    buildGrafo(root, [], background),
+    background = ImageTk.PhotoImage(Image.open("./view/sprites/map.png"))
+    Label(root, image=background).grid(column=1, row=0, columnspan=16, rowspan=16)
+    buildGrafo(root, []),
 
     # BUILD INTERFACE
     origemFrame.pack(padx=8, pady=8)
     destinoFrame.pack(padx=8, pady=8)
     opcoesFrame.pack(padx=8, pady=8)
-    nomes.pack(padx=12, pady=8, fill=BOTH)
-    menuFrame.grid(column=0, row=0)
-    grafoFrame.grid(column=1, row=0)
+    menuFrame.grid(column=0, row=0, rowspan=14, pady=(0, 80))
 
     root.mainloop()
