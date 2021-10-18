@@ -87,3 +87,39 @@ grafoDecrescente = [
     ["VASCONCELOS", "SILVA", "KAISER", "ESTEVES"],
     ["SILVA"],
 ]
+
+
+
+# GRAFO WITH WEIGHT
+grafoPeso = [
+    [["GOMES",10], ["RIBEIRO",8]],  # 0
+    [["JACINTO", 10], ["PACHECO",10], ["QUEIROZ", 8]],
+    [["JACINTO",10], ["KAISER", 6], ["TEIXEIRA",4], ["XAVIER", 4]],
+    [["MACEDO",15]],
+    [["MACEDO",12], ["YORK",7]],
+    [["OLIVEIRA", 8], ["WAGNER",5]],
+    [["ALENCAR",10]],
+    [["NOGUEIRA",8]],
+    [["QUEIROZ",10]],
+    [["BORGES",10], ["CENTRO",10], ["SILVA",4]],
+    [["CENTRO",6], ["MACEDO",8], ["YORK",17]],
+    [["OLIVEIRA",6], ["PACHECO",10], ["UCHOA",10]],
+    [["DUARTE",15], ["ESTEVES",12], ["KAISER",8], ["NOGUEIRA",8]],
+    [["HOLANDA",8], ["MACEDO",8], ["TEIXEIRA",11]],
+    [["FREIRE",8], ["LACERDA",6], ["XAVIER",3]],
+    [["BORGES",10], ["LACERDA",10]],
+    [["BORGES",8], ["INACIO",10]],
+    [["ALENCAR",8], ["TEIXEIRA",8]],
+    [["JACINTO",4], ["YORK",9], ["ZAMBONI",11]],
+    [["CENTRO",4], ["NOGUEIRA",11], ["RIBEIRO",8], ["WAGNER",8]],
+    [["LACERDA",10]],
+    [["YORK",23]],
+    [["FREIRE",5], ["TEIXEIRA",8]],
+    [["CENTRO",4], ["OLIVEIRA",3]],
+    [["ESTEVES",7], ["KAISER",17], ["SILVA",9], ["VASCONCELOS",23]],
+    [["SILVA",11]],
+]
+
+heuristicas = [
+    
+]
