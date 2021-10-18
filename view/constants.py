@@ -13,6 +13,9 @@ BTN_NAMES = [
     "Profundidade Limitada",
     "Aprofundamento Iterativo",
     "Bidirecional",
+    "Custo Uniforme",
+    "Greedy",
+    "A Estrela",
 ]
 
 GRAFO = [

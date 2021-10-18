@@ -23,28 +23,22 @@ def buildGUI():
     )
     origemFrame = LabelFrame(
         menuFrame,
-        padx=4,
-        pady=4,
         text=" Origem ",
-        font=("TkDefaultFont", 12, "bold"),
+        font=("TkDefaultFont", 11, "bold"),
         foreground=CLR_FONT,
         background=CLR_BACKGROUND,
     )
     destinoFrame = LabelFrame(
         menuFrame,
-        padx=4,
-        pady=4,
         text=" Destino ",
-        font=("TkDefaultFont", 12, "bold"),
+        font=("TkDefaultFont", 11, "bold"),
         foreground=CLR_FONT,
         background=CLR_BACKGROUND,
     )
     opcoesFrame = LabelFrame(
         menuFrame,
-        padx=4,
-        pady=4,
         text=" Algoritimos ",
-        font=("TkDefaultFont", 12, "bold"),
+        font=("TkDefaultFont", 11, "bold"),
         foreground=CLR_FONT,
         background=CLR_BACKGROUND,
     )
@@ -67,13 +61,14 @@ def buildGUI():
     destinoField.grid(column=0, row=1, padx=4, pady=4)
 
     # BOTOES
-    for botao in range(7):
+    for botao in range(len(BTN_NAMES)):
         Button(
             opcoesFrame,
             width=22,
             text=BTN_NAMES[botao],
             font=("TkDefaultFont", 9, "bold"),
             activeforeground=CLR_DEFAULT,
+            state="normal" if botao != 2 and botao != 3 else "disabled",
             command=lambda botao=botao, origem=origem, destino=destino: buildGrafo(
                 root,
                 gerarRota(
@@ -86,13 +81,13 @@ def buildGUI():
 
     # GRAFO
     background = ImageTk.PhotoImage(Image.open("./view/sprites/map.png"))
-    Label(root, image=background).grid(column=1, row=0, columnspan=16, rowspan=16)
-    buildGrafo(root, []),
+    Label(root, image=background).grid(column=1, row=0, columnspan=16, rowspan=14)
+    buildGrafo(root, [[], 0]),
 
     # BUILD INTERFACE
     origemFrame.pack(padx=8, pady=8)
     destinoFrame.pack(padx=8, pady=8)
     opcoesFrame.pack(padx=8, pady=8)
-    menuFrame.grid(column=0, row=0, rowspan=14, pady=(0, 80))
+    menuFrame.grid(column=0, row=0, rowspan=14)
 
     root.mainloop()
