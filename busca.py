@@ -525,9 +525,9 @@ class busca(object):
                         
                         if flag3:
                             caminho = []
-                            caminho = l4.exibeArvore()
+                            caminho = l4.exibeCaminho()
                             caminho = caminho[::-1]
-                            caminho += l2.exibeArvore1(novo)
+                            caminho += l2.exibeCaminho1(novo)
                             return caminho
                         else:
                             linha = []
