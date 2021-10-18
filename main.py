@@ -53,5 +53,14 @@ print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
 caminhoBidirecional = sol.bidirecional(origem, destino)
 print("\nBidirecional.......: ", caminhoBidirecional)
 
+# CUSTO UNIFORME
+caminhoCusto = sol.custo_uniforme(origem, destino)
+
+print("\nCusto uniforme.......: \nCaminho:", caminhoCusto[0],"\nCusto: ", caminhoCusto[1],"\n")
+
+# GREEDY
+
+# A*
+
 # INTERFACE
 # buildGUI()
