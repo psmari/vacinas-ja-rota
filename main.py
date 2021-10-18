@@ -7,8 +7,8 @@ sol = busca()
 # AMPLITUDE - PROBLEMA COM DESTINO ÚNICO
 origem = "ALENCAR"
 destino1 = []
-# destino = ["SILVA"]
-destino = ["WAGNER", "YORK", "SILVA"]
+destino = ["SILVA"]
+# destino = ["WAGNER", "YORK", "SILVA"]
 destino1 = deepcopy(destino)
 caminhoAmplitudeUnitario = []
 caminhoProfundidadeUnitario = []
@@ -32,8 +32,8 @@ else:
 
 
 # PROFUNDIDADE LIMITADA
-origem = "ALENCAR"
-destino = "SILVA"
+origem = "SILVA"
+destino = "ALENCAR"
 
 caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 2)
 print("\nProfundidade Limitada (2)..: ", caminhoProfundidadeLimitada)
@@ -59,8 +59,12 @@ caminhoCusto = sol.custo_uniforme(origem, destino)
 print("\nCusto uniforme.......: \nCaminho:", caminhoCusto[0],"\nCusto: ", caminhoCusto[1],"\n")
 
 # GREEDY
+caminhoGreedy = sol.greedy(origem, destino)
+print("\nGreedy.......: \nCaminho:", caminhoGreedy[0],"\nCusto: ", caminhoGreedy[1],"\n")
 
 # A*
+caminhoA = sol.a_estrela(origem, destino)
+print("\nA*.......: \nCaminho:", caminhoA[0],"\nCusto: ", caminhoA[1],"\n")
 
 # INTERFACE
 # buildGUI()

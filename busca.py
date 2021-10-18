@@ -592,4 +592,106 @@ class busca(object):
                     
         return "Caminho não encontrado"      
 
+    def greedy(self, inicio, fim):
+        
+        l1 = lista()
+        l2 = lista()
+        visitado = []
+        
+        l1.insereUltimo(0,0,None,inicio)
+        l2.insereUltimo(0,0,None,inicio)
+        linha = []
+        linha.append(inicio)
+        linha.append(0)
+        visitado.append(linha)
+        
+        while l1.vazio() is not None:
+            atual = l1.deletaPrimeiro()
+            if atual.estado == fim:
+                caminho = []
+                caminho = l2.exibeArvore2(atual.estado,atual.valor1)
+                return caminho, atual.valor2
+        
+            ind = nos.index(atual.estado)
+            for i in range(len(grafoPeso[ind])):
+                novo = grafoPeso[ind][i][0]
+                ind1 = nos.index(grafoPeso[ind][i][0])
+
+                # HEURÍSTICA DO NÓ ATUAL ATÉ O OBJETIVO
+                v2 = atual.valor2 + grafoPeso[ind][i][1]
+                v1 = heuristicas[nos.index(fim)][ind1]
+
+                flag1 = True
+                flag2 = True
+                for j in range(len(visitado)):
+                    if visitado[j][0]==novo:
+                        if visitado[j][1]<=v1:
+                            flag1 = False
+                        else:
+                            flag2 = False
+                            visitado[j][1]=v1
+
+                        break
+                
+                if flag1:
+                    l1.inserePos_X(novo, v1, v2, atual)
+                    l2.inserePos_X(novo, v1, v2, atual)
+                    if flag2:
+                        linha = []
+                        linha.append(novo)
+                        linha.append(v1)
+                        visitado.append(linha)
+                    
+        return "Caminho não encontrado"      
+
     
+    def a_estrela(self, inicio, fim):
+        
+        l1 = lista()
+        l2 = lista()
+        visitado = []
+        
+        l1.insereUltimo(0,0,None,inicio)
+        l2.insereUltimo(0,0,None,inicio)
+        linha = []
+        linha.append(inicio)
+        linha.append(0)
+        visitado.append(linha)
+        
+        while l1.vazio() is not None:
+            atual = l1.deletaPrimeiro()
+            if atual.estado == fim:
+                caminho = []
+                caminho = l2.exibeArvore2(atual.estado,atual.valor1)
+                return caminho, atual.valor2
+        
+            ind = nos.index(atual.estado)
+            for i in range(len(grafoPeso[ind])):
+                novo = grafoPeso[ind][i][0]
+                ind1 = nos.index(grafoPeso[ind][i][0])
+
+                # CÁLCULO DO CUSTO DA ORIGEM ATÉ O NÓ ATUAL
+                v2 = atual.valor2 + grafoPeso[ind][i][1]
+                v1 = v2 + heuristicas[nos.index(fim)][ind1]
+                
+                flag1 = True
+                flag2 = True
+                for j in range(len(visitado)):
+                    if visitado[j][0]==novo:
+                        if visitado[j][1]<=v1:
+                            flag1 = False
+                        else:
+                            flag2 = False
+                            visitado[j][1]=v1
+                        break
+                
+                if flag1:
+                    l1.inserePos_X(novo, v1, v2, atual)
+                    l2.inserePos_X(novo, v1, v2, atual)
+                    if flag2:
+                        linha = []
+                        linha.append(novo)
+                        linha.append(v1)
+                        visitado.append(linha)
+                    
+        return "Caminho não encontrado"
