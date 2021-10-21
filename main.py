@@ -5,66 +5,66 @@ from view.interface import *
 sol = busca()
 
 # AMPLITUDE - PROBLEMA COM DESTINO ÚNICO
-origem = "ALENCAR"
-destino1 = []
-destino = ["SILVA"]
-# destino = ["WAGNER", "YORK", "SILVA"]
-destino1 = deepcopy(destino)
-caminhoAmplitudeUnitario = []
-caminhoProfundidadeUnitario = []
-caminhoAmplitudeMulti = []
-caminhoProfundidadeMulti = []
-caminhoBidirecional = []
+# origem = "ALENCAR"
+# destino1 = []
+# destino = ["SILVA"]
+# # destino = ["WAGNER", "YORK", "SILVA"]
+# destino1 = deepcopy(destino)
+# caminhoAmplitudeUnitario = []
+# caminhoProfundidadeUnitario = []
+# caminhoAmplitudeMulti = []
+# caminhoProfundidadeMulti = []
+# caminhoBidirecional = []
 
-if len(destino) == 1:
-    caminhoAmplitudeUnitario = sol.amplitudeUnitario(origem, destino[0])
-    print("\n> Amplitude com destino único: ", caminhoAmplitudeUnitario)
+# if len(destino) == 1:
+#     caminhoAmplitudeUnitario = sol.amplitudeUnitario(origem, destino[0])
+#     print("\n> Amplitude com destino único: ", caminhoAmplitudeUnitario)
 
-    caminhoProfundidadeUnitario = sol.profundidadeUnitario(origem, destino[0])
-    print("\n> Profundidade com destino único: ", caminhoProfundidadeUnitario)
+#     caminhoProfundidadeUnitario = sol.profundidadeUnitario(origem, destino[0])
+#     print("\n> Profundidade com destino único: ", caminhoProfundidadeUnitario)
 
-else:
-    caminhoAmplitudeMulti = sol.amplitudeMulti(origem, destino1)
-    print("\n> Amplitude com destino múltiplo: ", caminhoAmplitudeMulti)
+# else:
+#     caminhoAmplitudeMulti = sol.amplitudeMulti(origem, destino1)
+#     print("\n> Amplitude com destino múltiplo: ", caminhoAmplitudeMulti)
 
-    caminhoProfundidadeMulti = sol.profundidadeMulti(origem, destino1)
-    print("\n> Profundidade com destino múltiplo: ", caminhoProfundidadeMulti)
-
-
-# PROFUNDIDADE LIMITADA
-origem = "SILVA"
-destino = "ALENCAR"
-
-caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 2)
-print("\nProfundidade Limitada (2)..: ", caminhoProfundidadeLimitada)
-
-caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 3)
-print("\nProfundidade Limitada (3)..: ", caminhoProfundidadeLimitada)
-
-caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 5)
-print("\nProfundidade Limitada (5)..: ", caminhoProfundidadeLimitada)
+#     caminhoProfundidadeMulti = sol.profundidadeMulti(origem, destino1)
+#     print("\n> Profundidade com destino múltiplo: ", caminhoProfundidadeMulti)
 
 
-# APROFUNDAMENTO ITERATIVO
-caminhoAprofundamentoIterativo = sol.aprofundamento_iterativo(origem, destino)
-print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
+# # PROFUNDIDADE LIMITADA
+# origem = "SILVA"
+# destino = "ALENCAR"
 
-# BIDIRECIONAL
-caminhoBidirecional = sol.bidirecional(origem, destino)
-print("\nBidirecional.......: ", caminhoBidirecional)
+# caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 2)
+# print("\nProfundidade Limitada (2)..: ", caminhoProfundidadeLimitada)
 
-# CUSTO UNIFORME
-caminhoCusto = sol.custo_uniforme(origem, destino)
+# caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 3)
+# print("\nProfundidade Limitada (3)..: ", caminhoProfundidadeLimitada)
 
-print("\nCusto uniforme.......: \nCaminho:", caminhoCusto[0],"\nCusto: ", caminhoCusto[1],"\n")
+# caminhoProfundidadeLimitada = sol.profundidade_limitada(origem, destino, 5)
+# print("\nProfundidade Limitada (5)..: ", caminhoProfundidadeLimitada)
 
-# GREEDY
-caminhoGreedy = sol.greedy(origem, destino)
-print("\nGreedy.......: \nCaminho:", caminhoGreedy[0],"\nCusto: ", caminhoGreedy[1],"\n")
 
-# A*
-caminhoA = sol.a_estrela(origem, destino)
-print("\nA*.......: \nCaminho:", caminhoA[0],"\nCusto: ", caminhoA[1],"\n")
+# # APROFUNDAMENTO ITERATIVO
+# caminhoAprofundamentoIterativo = sol.aprofundamento_iterativo(origem, destino)
+# print("\nAprof. Iterativo...:", caminhoAprofundamentoIterativo)
+
+# # BIDIRECIONAL
+# caminhoBidirecional = sol.bidirecional(origem, destino)
+# print("\nBidirecional.......: ", caminhoBidirecional)
+
+# # CUSTO UNIFORME
+# caminhoCusto = sol.custo_uniforme(origem, destino)
+
+# print("\nCusto uniforme.......: \nCaminho:", caminhoCusto[0],"\nCusto: ", caminhoCusto[1],"\n")
+
+# # GREEDY
+# caminhoGreedy = sol.greedy(origem, destino)
+# print("\nGreedy.......: \nCaminho:", caminhoGreedy[0],"\nCusto: ", caminhoGreedy[1],"\n")
+
+# # A*
+# caminhoA = sol.a_estrela(origem, destino)
+# print("\nA*.......: \nCaminho:", caminhoA[0],"\nCusto: ", caminhoA[1],"\n")
 
 # INTERFACE
-# buildGUI()
+buildGUI()
